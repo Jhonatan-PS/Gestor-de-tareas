@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/Estilo.css')}}">
+    <title>Bienvenido</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="/Administrador">Inicio</a>
+        <a href="/Registro-usuarios-interfaz-administrador">Registrar usuarios</a>
+        <a href="/Registro-tareas-interfaz-administador">Registrar tareas</a>
+        <a href="/Salir">Cerrar sesión</a>          
+        <a href="/Cambiar_contrasena_administrador" id="Contenedor_cambiar_contrasena">
+            <img src="{{url_for('static', filename='Imagenes/icons8-change-password-58.png')}}" alt="Cambiar Contraseña">
+        </a>         
+    </header>
+    <div id="Contenedor_inicio_administrador">
+        <h1>Bienvenido administrador {{ nombre_usuario }}</h1>
+    </div>
+    <h2>USUARIOS REGISTRADOS</h2>    
+    <div><a href="/Listar_usuarios" id="Boton_listar_usuarios">LISTAR USUARIOS</a></div>
+    <div id="Usuarios-registrados">               
+        <table class="usuarios-registrados">
+            <thead>
+                <tr>
+                    <th>ID_Usuario</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Nombre de usuario</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario['ID_Usuario'] }}</td>
+                    <td>{{ usuario['Nombres'] }}</td>
+                    <td>{{ usuario['Apellidos'] }}</td>
+                    <td>{{ usuario['Email'] }}</td>
+                    <td>{{ usuario['Nombre_usuario'] }}</td>
+                    <td>{{ usuario['Rol'] }}</td>
+                    <td>
+                        <!-- Botón de editar -->
+                        <a href="/editar_usuario/{{ usuario['ID_Usuario'] }}" class="btn-editar">Editar</a>
+                        <!-- Botón de borrar -->
+                        <a href="/borrar_usuario/{{ usuario['ID_Usuario'] }}" class="btn-borrar" onclick="return confirm('¿Estás seguro de que deseas borrar este usuario?')">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <h2>TAREAS REGISTRADAS</h2>    
+    <div><a href="/Listar_tareas" id="Boton_listar_tareas">LISTAR TAREAS</a></div>
+    <div id="Tareas-registradas">               
+        <table class="tareas-registradas">
+            <thead>
+                <tr>
+                    <th>ID_Tarea</th>
+                    <th>Nombre</th>
+                    <th>Fecha_Inicio</th>
+                    <th>Fecha_Fin</th>
+                    <th>Estado</th>
+                    <th>ID_Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea['ID_Tarea'] }}</td>
+                    <td>{{ tarea['Nombre'] }}</td>
+                    <td>{{ tarea['Fecha_Inicio'] }}</td>
+                    <td>{{ tarea['Fecha_Fin'] }}</td>
+                    <td>{{ tarea['Estado'] }}</td>
+                    <td>{{ tarea['ID_Usuario'] }}</td>
+                    <td>
+                        <!-- Botón de editar -->
+                        <a href="/editar_tarea/{{ tarea['ID_Tarea'] }}" class="btn-editar">Editar</a>
+                        <!-- Botón de borrar -->
+                        <a href="/borrar_tarea/{{ tarea['ID_Tarea'] }}" class="btn-borrar" onclick="return confirm('¿Estás seguro de que deseas borrar esta tarea?')">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

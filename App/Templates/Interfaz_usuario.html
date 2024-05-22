@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/Estilo.css')}}">
+    <title>Bienvenido</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="/Usuario">Inicio</a>
+        <a href="/Registro_tareas">Registrar tareas</a>
+        <a href="/Salir">Cerrar sesión</a> 
+        <a href="/Cambiar_contrasena_usuario">
+            <img src="{{url_for('static', filename='Imagenes/icons8-change-password-58.png')}}" alt="Cambiar Contraseña">
+        </a>      
+    </header>
+    <div id="Contenedor_inicio_usuario">
+        <h1>Bienvenido usuario {{ nombre_usuario }}</h1>
+    </div>
+    <h2>TAREAS REGISTRADAS</h2>    
+    <div><a href="/Listar_tareas-usuario" id="Boton_listar_tareas">LISTAR TAREAS</a></div>
+    <div id="Tareas-registradas">               
+        <table class="tareas-registradas">
+            <thead>
+                <tr>
+                    <th>ID_Tarea</th>
+                    <th>Nombre</th>
+                    <th>Fecha_Inicio</th>
+                    <th>Fecha_Fin</th>
+                    <th>Estado</th>
+                    <th>ID_Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea['ID_Tarea'] }}</td>
+                    <td>{{ tarea['Nombre'] }}</td>
+                    <td>{{ tarea['Fecha_Inicio'] }}</td>
+                    <td>{{ tarea['Fecha_Fin'] }}</td>
+                    <td>{{ tarea['Estado'] }}</td>
+                    <td>{{ tarea['ID_Usuario'] }}</td>
+                    <td>
+                        <!-- Botón de editar -->
+                        <a href="{{ url_for('editar_tarea_usuario', id=tarea['ID_Tarea']) }}" class="btn-editar">Editar</a>
+                        <!-- Botón de borrar -->
+                        <a href="{{ url_for('borrar_tarea_usuario', id=tarea['ID_Tarea']) }}" class="btn-borrar" onclick="return confirm('¿Estás seguro de que deseas borrar esta tarea?')">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

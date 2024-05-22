@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/Estilo.css')}}">
+    <title>Cambiar contraseña</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="/Administrador">Inicio</a>
+        <a href="/Registro-usuarios-interfaz-administrador">Registrar usuarios</a>
+        <a href="/Registro-tareas-interfaz-administador">Registrar tareas</a>
+        <a href="/Salir">Cerrar sesión</a>     
+        <a href="/Cambiar_contrasena_administrador" id="Contenedor_cambiar_contrasena">
+            <img src="{{url_for('static', filename='Imagenes/icons8-change-password-58.png')}}" alt="Cambiar Contraseña">
+        </a>   
+    </header>
+    <div class="content">
+        <form action="/Cambiar_contrasena_administrador" method="POST">
+            <h2>Cambiar Contraseña</h2>
+            <label for="password_actual">Contraseña Actual:</label>
+            <input type="password" id="password_actual" name="contraseña_actual" required><br><br>
+            
+            <label for="nueva_contrasena">Nueva Contraseña:</label>
+            <input type="password" id="nueva_contrasena" name="nueva_contrasena" required><br><br>
+            
+            <label for="confirmar_contrasena">Confirmar Nueva Contraseña:</label>
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required><br><br>
+            <button id="Guardar" type="submit">Cambiar contraseña</button>
+        </form>
+    </div>    
+</body>
+</html>

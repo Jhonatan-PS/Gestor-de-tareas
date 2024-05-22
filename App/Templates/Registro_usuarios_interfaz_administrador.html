@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/Estilo.css')}}">
+    <title>Registro de usuarios</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="/Administrador">Inicio</a>
+        <a href="/Registro-usuarios-interfaz-administrador">Registrar usuarios</a>
+        <a href="/Registro-tareas-interfaz-administador">Registrar tareas</a>
+        <a href="/Salir">Cerrar sesión</a> 
+        <a href="/Cambiar_contrasena_administrador" id="Contenedor_cambiar_contrasena">
+            <img src="{{url_for('static', filename='Imagenes/icons8-change-password-58.png')}}" alt="Cambiar Contraseña">
+        </a>
+    </header>
+    <div class="content">
+        <form action="/Registro-usuarios-interfaz-administrador" method="POST">
+            <h2>Formulario de registro</h2>
+            
+            <label for="nombres">Nombres:</label><br>
+            <input type="text" id="nombres" name="nombres_usuario" required><br><br>
+            
+            <label for="apellidos">Apellidos:</label><br>
+            <input type="text" id="apellidos" name="apellidos_usuario" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email_usuario" required><br><br>
+
+            <label for="usuario">Nombre de usuario:</label><br>
+            <input type="text" id="usuario" name="nombre_usuario" required><br><br>        
+            
+            <label for="contraseña">Contraseña:</label><br>
+            <input type="password" id="contraseña" name="contraseña" required><br><br>
+
+            <label for="rol">Rol:</label><br>
+            <select id="rol" name="rol" required>
+                <option value="Usuario">Usuario</option>
+                <option value="Administrador">Administrador</option>
+            </select><br><br>
+            
+            <button id="Registrarse" type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>

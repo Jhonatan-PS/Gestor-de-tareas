@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/Estilo.css')}}">
+    <title>Formulario de tareas</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="/Administrador">Inicio</a>
+        <a href="/Registro-usuarios-interfaz-administrador">Registrar usuarios</a>
+        <a href="/Registro-tareas-interfaz-administador">Registrar tareas</a>
+        <a href="/Salir">Cerrar sesión</a>      
+        <a href="/Cambiar_contrasena_administrador" id="Contenedor_cambiar_contrasena">
+            <img src="{{url_for('static', filename='Imagenes/icons8-change-password-58.png')}}" alt="Cambiar Contraseña">
+        </a>  
+    </header>
+    <div class="content">
+        <form action="/Registro-tareas-interfaz-administador" method="POST">
+            <h2>Formulario de Tareas</h2>
+            
+            <label for="nombre_tarea">Nombre de la tarea:</label><br>
+            <input type="text" id="nombre_tarea" name="nombre_tarea" required><br><br>
+            
+            <label for="fecha_inicio">Fecha de inicio:</label><br>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required><br><br>
+            
+            <label for="fecha_fin">Fecha de fin:</label><br>
+            <input type="date" id="fecha_fin" name="fecha_fin" required><br><br>
+            
+            <label for="estado">Estado:</label><br>
+            <select id="estado" name="estado" required>
+                <option value="Por asignar">Por asignar</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Terminado">Terminado</option>
+            </select><br><br>
+            
+            <button id="Guardar">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>
